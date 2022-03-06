@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redux Tutorial</title>
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/skeleton.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <div class="tasks-container">
+      <h1>Tasks</h1>
+      <ul id="tasks">
+        <div class="no-tasks">You are free at the moment</div>
+      </ul>
+    </div>
+    <form id="task-form" onsubmit="addTask(event)">
+      <legend><h5>Add Task</h5></legend>
+      <fieldset>
+        <label for="description">Title</label>
+        <input type="text" id="description" />
+      </fieldset>
+      <input type="submit" value="Add Task" />
+    </form>
+
+    <script src="./node_modules/redux/dist/redux.min.js"></script>
+    <script src="./js/redux/actions.js"></script>
+    <script src="./js/redux/reducer.js"></script>
+    <script src="./js/redux/store.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
