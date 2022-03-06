@@ -51,5 +51,6 @@ function completeTask(id) {
 
 store.subscribe(() => {
   let state = store.getState();
-  updateUserInterface(state);
+  console.log(state)
+  updateUserInterface(state.tasks);
 });

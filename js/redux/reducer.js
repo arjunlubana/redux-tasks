@@ -6,7 +6,9 @@
  * @returns {Array} - The updated state
  */
 
-function todos(state, action) {
+const combineReducers = Redux.combineReducers;
+
+function tasks(state = [], action) {
   switch (action.type) {
     case "ADD_TASK":
       return state.concat([action.payload]);
@@ -23,3 +25,16 @@ function todos(state, action) {
       return state;
   }
 }
+
+function user(state = {}, action) {
+  switch (action.type) {
+    case "SIGN_IN":
+      return state.concat([action.payload]);
+    case "LOG_OUT":
+      return state.filter((task) => task.id !== action.payload.id);
+    default:
+      return state;
+  }
+}
+
+let rootReducer = combineReducers({tasks, user})
