@@ -10,21 +10,41 @@
     <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
-    <div class="tasks-container">
-      <h1>Tasks</h1>
-      <ul id="tasks">
-        <div class="no-tasks">You are free at the moment</div>
-      </ul>
-    </div>
-    <form id="task-form" onsubmit="addTask(event)">
-      <legend><h5>Add Task</h5></legend>
-      <fieldset>
-        <label for="description">Title</label>
-        <input type="text" id="description" />
-      </fieldset>
-      <input type="submit" value="Add Task" />
-    </form>
+    <header>
+      <div class="logo">Dux Tasks</div>
 
+      <div id="profile" class="profile" onclick="toggleLoginModal()">
+        Login
+      </div>
+    </header>
+
+    <main class="app-container">
+      <div class="tasks-container">
+        <h1>Tasks</h1>
+        <ul id="tasks">
+          <div class="no-tasks">You are free at the moment</div>
+        </ul>
+      </div>
+      <form id="task-form" onsubmit="addTask(event)">
+        <legend><h5>Add Task</h5></legend>
+        <fieldset>
+          <label for="description">Title</label>
+          <input type="text" id="description" />
+        </fieldset>
+        <input type="submit" value="Add Task" />
+      </form>
+    </main>
+
+    <div id="login-modal" class="login" style="display: none">
+      <form onsubmit="loginUser(event)">
+        <legend><h4>Login</h4></legend>
+        <label for="username">Username</label>
+        <input type="text" id="username" />
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" />
+        <input type="submit" class="button-primary" value="Login" />
+      </form>
+    </div>
     <script src="./node_modules/redux/dist/redux.min.js"></script>
     <script src="./js/redux/actions.js"></script>
     <script src="./js/redux/reducer.js"></script>

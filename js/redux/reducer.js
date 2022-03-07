@@ -16,8 +16,8 @@ function tasks(state = [], action) {
       return state.filter((task) => task.id !== action.payload.id);
     case "COMPLETE_TASK":
       return state.map((task) => {
-        if(task.id === action.payload.id){
-          return ({...task, finished: !task.finished})
+        if (task.id === action.payload.id) {
+          return { ...task, finished: !task.finished };
         }
         return task;
       });
@@ -29,12 +29,16 @@ function tasks(state = [], action) {
 function user(state = {}, action) {
   switch (action.type) {
     case "SIGN_IN":
-      return state.concat([action.payload]);
+      return {
+        ...state,
+        username: action.payload.username,
+        password: action.payload.password,
+      };
     case "LOG_OUT":
-      return state.filter((task) => task.id !== action.payload.id);
+      return {};
     default:
       return state;
   }
 }
 
-let rootReducer = combineReducers({tasks, user})
+let rootReducer = combineReducers({ tasks, user });

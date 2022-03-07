@@ -25,3 +25,11 @@ function COMPLETE_TASK(payload) {
     payload,
   };
 }
+
+
+function SIGN_IN(payload) {
+  return {
+    type: "SIGN_IN",
+    payload,
+  };
+}

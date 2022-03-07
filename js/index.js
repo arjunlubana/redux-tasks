@@ -1,7 +1,16 @@
 let tasks_list = document.getElementById("tasks");
 let task_description = document.getElementById("description");
+let login_modal = document.getElementById("login-modal");
+let username = document.getElementById("username");
+let password = document.getElementById("password");
+let profile = document.getElementById("profile");
 
-const updateUserInterface = (state) => {
+function toggleLoginModal() {
+  login_modal.style.display =
+    login_modal.style.display == "none" ? "block" : "none";
+}
+
+const updateTasksList = (state) => {
   task_description.value = "";
   tasks_list.innerHTML = "";
   let tasks_list_template = state.map(
@@ -21,12 +30,18 @@ const updateUserInterface = (state) => {
     : `<div class="no-tasks" >You are free at the moment</div>`;
 };
 
+const updateProfile = (state) => {
+  username.value = "";
+  password.value = "";
+  profile.innerHTML = `Welcome, ${state.username}`;
+};
 // Adding a task to the store
 function addTask(event) {
   event.preventDefault();
+  let tasksCount = store.getState().tasks.length;
   store.dispatch(
     ADD_TASK({
-      id: store.getState().length + 1,
+      id: ++tasksCount,
       description: task_description.value,
       finished: false,
     })
@@ -49,8 +64,20 @@ function completeTask(id) {
   );
 }
 
+function loginUser(event) {
+  event.preventDefault();
+  toggleLoginModal()
+  store.dispatch(
+    SIGN_IN({
+      username: username.value,
+      password: password.value,
+    })
+  );
+}
+
 store.subscribe(() => {
   let state = store.getState();
-  console.log(state)
-  updateUserInterface(state.tasks);
+  console.log(state);
+  updateTasksList(state.tasks);
+  updateProfile(state.user);
 });
