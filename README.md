@@ -1,6 +1,6 @@
-# redux-experimentation
+# Redux Tasks
 
-I am starting to learn redux so I thought it was a good idea to publish this here.
+I am starting to learn redux so I thought it was a good idea to create a static website using redux state management
 
 # Details
 
